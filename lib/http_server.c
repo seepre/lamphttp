@@ -103,7 +103,7 @@ int http_onMessage(struct buffer *input, struct tcp_connection *tcp_conn) {
         }
 
         struct buffer *buffer = buffer_new();
-        http_response_encode_buffer(http_re, buffer);
+        http_response_encode_buffer(http_response, buffer);
         tcp_connection_send_buffer(tcp_conn, buffer);
 
         if (http_request_close_connection(http_re)) {

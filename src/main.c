@@ -28,6 +28,7 @@ int onRequest(struct http_request *http_request, struct http_response *http_resp
         http_response->status_code = NotFound;
         http_response->status_message = "Not Found";
         http_response->keep_connected = 1;
+        http_response->body = "";
     }
 
     return 0;

@@ -81,7 +81,7 @@ struct tcp_connection *tcp_connection_new(int connected_fd, struct event_loop *e
         tcp_conn->conn_completed_callback(tcp_conn);
     }
 
-    event_loop_add_channel_event(tcp_conn, connected_fd, tcp_conn->channel);
+    event_loop_add_channel_event(tcp_conn->ev_loop, connected_fd, tcp_conn->channel);
     return tcp_conn;
 }
 
@@ -93,7 +93,7 @@ int tcp_connection_send_data(struct tcp_connection *tcp_conn, void *data, int si
     struct channel *ch = tcp_conn->channel;
     struct buffer *output_buffer = tcp_conn->output_buffer;
 
-    if (!channel_write_event_enable(ch) && buffer_readable_size(output_buffer) == 0) {
+    if (!channel_write_event_is_enabled(ch) && buffer_readable_size(output_buffer) == 0) {
         nwrited = write(ch->fd, data, size);
         if (nwrited >= 0) {
             nleft = nleft - nwrited;

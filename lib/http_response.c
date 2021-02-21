@@ -31,7 +31,7 @@ void http_response_encode_buffer(struct http_response *http_response, struct buf
     if (http_response->keep_connected) {
         buffer_append_string(output, "Connection: close\r\n");
     } else {
-        snprintf(buf, sizeof(buf), "Content-Length: %zd\r\n", strlen(http_response->body));
+        snprintf(buf, sizeof(buf), "Content-Length: %d\r\n", strlen(http_response->body));
         buffer_append_string(output, buf);
         buffer_append_string(output, "Connection: Keep-Alive\r\n");
     }

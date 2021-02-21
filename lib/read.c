@@ -24,7 +24,7 @@ size_t readn(int fd, void *buffer, size_t size) {
         buffer_pointer += result;
     }
 
-    return size-len;
+    return (size - len);
 }
 
 size_t readline_2(int fd, char *buffer, size_t len) {
