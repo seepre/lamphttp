@@ -6,7 +6,6 @@
 #define EVENT_LOOP_THREAD_H
 
 #include <pthread.h>
-#include "event_loop.h"
 
 struct event_loop_thread {
     struct event_loop *ev_loop;

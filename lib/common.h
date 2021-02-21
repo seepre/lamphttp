@@ -62,15 +62,15 @@ size_t read_message(int fd, char *buf, size_t length);
 
 size_t readline(int fd, char *buf, size_t length);
 
-//int tcp_server(int port);
-//
-//int tcp_server_listen(int port);
-//
-//int tcp_nonblocking_server_listen(int port);
+int tcp_server(int port);
+
+int tcp_server_listen(int port);
+
+int tcp_nonblocking_server_listen(int port);
 //
 void make_nonblocking(int fd);
 
-//int tcp_client(char *address, int port);
+int tcp_client(char *address, int port);
 
 
 #define     SERV_PORT       1234

@@ -17,7 +17,7 @@ struct channel* channel_new(int fd, int events, event_read_callback event_read_c
     return chan;
 }
 
-int channel_write_event_is_enable(struct channel *ch) {
+int channel_write_event_is_enabled(struct channel *ch) {
     return ch->events & EVENT_WRITE;
 }
 

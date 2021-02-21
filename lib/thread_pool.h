@@ -12,7 +12,7 @@ struct thread_pool {
     struct event_loop *main_loop; // create main thread for pool
     int started; // is started
     int thread_number;  // thread number
-    struct event_loop_thread *ev_loop_t; // arr pointer to loop thread
+    struct event_loop_thread *ev_loop_ts; // arr pointer to loop thread
     int position; // event_loop position
 };
 

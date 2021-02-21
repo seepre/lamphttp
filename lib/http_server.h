@@ -21,6 +21,6 @@ struct http_server *http_server_new(struct event_loop *ev_loop, int port, reques
 
 void http_server_start(struct http_server *http_server);
 
-int pars_http_request(struct buffer *input, struct http_request *http_re);
+int parse_http_request(struct buffer *input, struct http_request *http_re);
 
 #endif //HTTP_SERVER_H

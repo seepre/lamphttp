@@ -5,7 +5,7 @@
 #include "utils.h"
 #include "log.h"
 
-void assert_is_same_thread(struct event_loop *ev_loop) {
+void assert_in_same_thread(struct event_loop *ev_loop) {
     if (ev_loop->owner_thread_id != pthread_self()) {
         LOG_ERROR("not in the same thread");
         exit(-1);

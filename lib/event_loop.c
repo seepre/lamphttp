@@ -147,7 +147,7 @@ int event_loop_handle_pending_update(struct event_loop *ev_loop, int fd, struct 
     ev_dis->update(ev_loop, ch);
 }
 
-int channel_event_activate(struct event_loop *ev_loop, int fd, int events) {
+int channel_event_active(struct event_loop *ev_loop, int fd, int events) {
     struct channel_map *map = ev_loop->channelMap;
 
     lamp_msgx("activate channel fd = %d, %s", fd, events, ev_loop->thread_name);
@@ -233,4 +233,27 @@ struct event_loop *event_loop_init_with_name(char *thread_name) {
     event_loop_add_channel_event(ev_loop, ev_loop->socket_pair[1], ch);
 
     return ev_loop;
+}
+
+int event_loop_run(struct event_loop *ev_loop) {
+    assert(ev_loop != NULL);
+
+    struct event_dispatcher *dispatcher = ev_loop->event_dispatcher;
+
+    if (ev_loop->owner_thread_id != pthread_self()) {
+        exit(1);
+    }
+
+    lamp_msgx("event loop run, %s", ev_loop->thread_name);
+    struct timeval timeval;
+    timeval.tv_sec = 1;
+
+    while(!ev_loop->quit) {
+        dispatcher->dispatch(ev_loop, &timeval);
+
+        event_loop_handle_pending_channel(ev_loop);
+    }
+
+    lamp_msgx("event loop end, %s", ev_loop->thread_name);
+    return 0;
 }
