@@ -22,7 +22,7 @@ static void *epoll_init(struct event_loop *);
 
 static int epoll_add(struct event_loop *, struct channel *ch);
 
-static int epoll_del(struct event_loop *), struct  channel *ch);
+static int epoll_del(struct event_loop *, struct  channel *ch);
 
 static int epoll_update(struct event_loop *, struct channel *ch);
 
