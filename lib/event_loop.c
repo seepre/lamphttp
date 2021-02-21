@@ -94,7 +94,7 @@ int event_loop_handle_pending_add(struct event_loop *ev_loop, int fd, struct cha
             return -1;
 
 
-    if (map->entries[fd] == NULL) {
+    if ((map)->entries[fd] == NULL) {
         map->entries[fd] = ch;
 
         struct event_dispatcher *ev_dis = ev_loop->event_dispatcher;
@@ -150,7 +150,7 @@ int event_loop_handle_pending_update(struct event_loop *ev_loop, int fd, struct 
 int channel_event_active(struct event_loop *ev_loop, int fd, int events) {
     struct channel_map *map = ev_loop->channelMap;
 
-    lamp_msgx("activate channel fd = %d, %s", fd, events, ev_loop->thread_name);
+    lamp_msgx("activate channel fd = %d, revenst=%d, %s", fd, events, ev_loop->thread_name);
 
     if (fd < 0)
         return 0;

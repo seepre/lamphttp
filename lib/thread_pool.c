@@ -25,15 +25,13 @@ void thread_pool_start(struct thread_pool *thread_pool) {
     assert_in_same_thread(thread_pool->main_loop);
 
     thread_pool->started = 1;
-    void *tmp;
-
     if (thread_pool->thread_number <= 0) {
         return;
     }
 
     thread_pool->ev_loop_ts = malloc(thread_pool->thread_number * sizeof(struct event_loop_thread));
     for (int i = 0; i < thread_pool->thread_number; ++i) {
-        event_loop_thread_init(&thread_pool->ev_loop_ts[1], i);
+        event_loop_thread_init(&thread_pool->ev_loop_ts[i], i);
         event_loop_thread_start(&thread_pool->ev_loop_ts[i]);
     }
 }
