@@ -37,7 +37,8 @@ void http_response_encode_buffer(struct http_response *http_response, struct buf
     }
 
     if (http_response->response_headers != NULL && http_response->response_headers_number > 0) {
-        for (int i = 0; i < http_response->response_headers_number; i ++) {
+        int i;
+        for (i = 0; i < http_response->response_headers_number; i ++) {
             buffer_append_string(output, http_response->response_headers[i].key);
             buffer_append_string(output, ": ");
             buffer_append_string(output, http_response->response_headers[i].value);

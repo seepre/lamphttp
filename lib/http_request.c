@@ -28,7 +28,8 @@ struct http_request *http_request_new() {
 
 void http_request_clear(struct http_request *http_re) {
     if (http_re->request_headers != NULL) {
-        for (int i = 0; i < http_re->request_headers_number; i ++) {
+        int i;
+        for (i = 0; i < http_re->request_headers_number; i ++) {
             free(http_re->request_headers[i].key);
             free(http_re->request_headers[i].value);
         }
@@ -53,7 +54,8 @@ void http_request_add_header(struct http_request *http_re, char *key, char *val)
 
 char *http_request_get_header(struct http_request *http_re, char *key) {
     if (http_re->request_headers != NULL) {
-        for (int i = 0; i < http_re->request_headers_number; i ++) {
+        int i;
+        for (i = 0; i < http_re->request_headers_number; i ++) {
             if (strncmp(http_re->request_headers[i].key, key, strlen(key)) == 0) {
                 return http_re->request_headers[i].value;
             }

@@ -30,7 +30,8 @@ void thread_pool_start(struct thread_pool *thread_pool) {
     }
 
     thread_pool->ev_loop_ts = malloc(thread_pool->thread_number * sizeof(struct event_loop_thread));
-    for (int i = 0; i < thread_pool->thread_number; ++i) {
+    int i;
+    for (i = 0; i < thread_pool->thread_number; ++i) {
         event_loop_thread_init(&thread_pool->ev_loop_ts[i], i);
         event_loop_thread_start(&thread_pool->ev_loop_ts[i]);
     }
