@@ -28,6 +28,9 @@ make && make install
 ./bin/lamp
 ```
 
+然后在浏览器输入：http://127.0.0.1:1234 看到如下界面说明服务跑起来了
+
+![lamphttp_work](docs/lamphttp-worked.png)
 
 如果没有安装cmake，可以使用如下命令安装：
 
