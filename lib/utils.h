@@ -7,6 +7,8 @@
 
 #include "event_loop.h"
 
+struct event_loop;
+
 void assert_in_same_thread(struct event_loop *ev_loop);
 
 // 1-same thread  0-not the same thread

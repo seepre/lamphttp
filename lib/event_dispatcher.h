@@ -7,10 +7,14 @@
 
 #include "channel.h"
 
+struct event_loop;
+struct timeval;
+struct channel;
+
 struct event_dispatcher {
     const char *name;
 
-    void *(*init)(struct event_loop *);
+    void *(*init)(struct event_loop * a);
 
     // add channel event and notify dispatcher
     int (*add)(struct event_loop *, struct channel *ch);

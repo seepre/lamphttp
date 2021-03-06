@@ -14,6 +14,7 @@ int handle_connection_closed(struct tcp_connection *tcp_conn) {
     if (tcp_conn->conn_close_callback != NULL) {
         tcp_conn->conn_close_callback(tcp_conn);
     }
+    return 0;
 }
 
 
@@ -29,6 +30,7 @@ int handle_read(void *data) {
     }  else {
         handle_connection_closed(tcp_conn);
     }
+    return 0;
 }
 
 int handle_write(void *data) {
@@ -54,6 +56,7 @@ int handle_write(void *data) {
     } else {
         lamp_msgx("handle_write for tcp connection %s", tcp_conn->name);
     }
+    return 0;
 }
 
 struct tcp_connection *tcp_connection_new(int connected_fd, struct event_loop *ev_loop, connection_completed_call_back conn_completed_callback,

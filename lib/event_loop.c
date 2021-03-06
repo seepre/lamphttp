@@ -61,7 +61,7 @@ int event_loop_do_channel_event(struct event_loop *ev_loop, int fd, struct chann
     event_loop_channel_buffer_nolock(ev_loop, fd, ch, type);
     pthread_mutex_unlock(&ev_loop->mutex);
 
-    if (!is_in_same_thread(&ev_loop)) {
+    if (!is_in_same_thread(ev_loop)) {
         event_loop_wakeup(ev_loop);
     } else {
         event_loop_handle_pending_channel(ev_loop);
@@ -97,7 +97,7 @@ int event_loop_handle_pending_add(struct event_loop *ev_loop, int fd, struct cha
     if ((map)->entries[fd] == NULL) {
         map->entries[fd] = ch;
 
-        struct event_dispatcher *ev_dis = ev_loop->event_dispatcher;
+        struct event_dispatcher *ev_dis = (struct event_dispatcher *)ev_loop->event_dispatcher;
         ev_dis->add(ev_loop, ch);
         return 1;
     }
@@ -145,6 +145,7 @@ int event_loop_handle_pending_update(struct event_loop *ev_loop, int fd, struct 
 
     struct event_dispatcher *ev_dis = ev_loop->event_dispatcher;
     ev_dis->update(ev_loop, ch);
+    return 0;
 }
 
 int channel_event_active(struct event_loop *ev_loop, int fd, int events) {

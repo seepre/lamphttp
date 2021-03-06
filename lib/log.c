@@ -18,7 +18,7 @@ void error(int status, int err, char *fmt, ...) {
     va_end(ap);
 
     if (err)
-        fprintf(stderr, ": %d (%d)\n", strerror(err), err);
+        fprintf(stderr, ": %s (%d)\n", strerror(err), err);
     if (status)
         exit(status);
 }

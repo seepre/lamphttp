@@ -35,7 +35,7 @@ void map_init(struct channel_map *map) {
 void map_clear(struct channel_map *map) {
     if (map->entries != NULL) {
         int i;
-        for (i = 0; i < map->entries; ++i) {
+        for (i = 0; i < (int)map->entries; ++i) {
             if (map->entries[i] != NULL)
                 free(map->entries[i]);
         }
