@@ -20,7 +20,7 @@ git clone https://github.com/seepre/lamphttp.git
 cd lamphttp
 mkdir build
 cmake ../
-make && make install
+make
 ```
 
 ### 运行程序
