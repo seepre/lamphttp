@@ -23,6 +23,10 @@ cmake ../
 make
 ```
 
+安装的结果如下表示编译成功
+
+![lamphttp_installing](docs/installing.png)
+
 ### 运行程序
 ```
 ./bin/lamp
