@@ -23,6 +23,12 @@ cmake ../
 make && make install
 ```
 
+### 运行程序
+```
+./bin/lamp
+```
+
+
 如果没有安装cmake，可以使用如下命令安装：
 
 ```
